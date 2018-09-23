@@ -33,6 +33,10 @@ down:
 .PHONY: reset
 reset: down up
 
+.PHONY: logs
+logs: # Show logs of the services
+	docker-compose logs -f
+
 .PHONY: prod-up
 prod-up:
 	docker-compose -f docker-compose.yml up -d
@@ -45,13 +49,17 @@ prod-down:
 .PHONY: prod-reset
 prod-reset: prod-down prod-up
 
+.PHONY: prod-logs
+prod-logs: # Show logs of the services
+	docker-compose -f docker-compose.yml logs -f
+
 .PHONY: shell
 shell: # Open a shell on a started container
 	docker exec -it nginx-proxy /bin/bash
 
 .PHONY: whoami
 whoami:
-	curl -H "Host: whoami.local" localhost:${NGINX_PROXY_HTTP}
+	curl -H "Host: whoami.${NGINX_HOSTNAME}" localhost:${NGINX_PROXY_HTTP}
 
 .PHONY: whoami-up
 whoami-up:
@@ -64,3 +72,4 @@ whoami-down:
 
 .PHONY: whoami-reset
 whoami-reset: whoami-down whoami-up
+
