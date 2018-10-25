@@ -10,7 +10,7 @@ services:
       - '${NGINX_PROXY_HTTPS}:443'
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - .certs:/etc/nginx/certs
+      - .certs:/etc/nginx/certs # Comment to listen on 80 instead of 443
       - dhparam:/etc/nginx/dhparam
     restart: always
 
