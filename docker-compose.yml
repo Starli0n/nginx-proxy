@@ -48,13 +48,13 @@ services:
       - dockergen
     restart: always
 
+networks:
+  default:
+    external:
+      name: ${NGINX_PROXY_NET}
+
 volumes:
   conf:
   vhost:
   html:
   certs:
-
-networks:
-  default:
-    external:
-      name: ${NGINX_PROXY_NET}

@@ -13,7 +13,7 @@ env: # Create .env and tweak it before initialize
 initialize:
 	docker network create ${NGINX_PROXY_NET} || true
 	curl -kO https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl
-	mkdir -p .certs
+	mkdir -p .certs/none
 	openssl req -new -x509 -nodes -newkey rsa:2048 -keyout .certs/${NGINX_HOSTNAME}.key -out .certs/${NGINX_HOSTNAME}.crt \
 		-subj "/C=FR/ST=France/L=Paris/O=Private/CN=*.${NGINX_HOSTNAME}"
 
