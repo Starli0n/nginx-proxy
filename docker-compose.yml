@@ -13,6 +13,7 @@ services:
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - certs:/etc/nginx/certs:ro
+      - ./custom.conf:/etc/nginx/conf.d/custom.conf:ro
     restart: always
 
   dockergen:

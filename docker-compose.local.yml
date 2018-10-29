@@ -12,6 +12,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - .certs:/etc/nginx/certs # Comment to listen on 80 instead of 443
       - dhparam:/etc/nginx/dhparam
+      - ./custom.conf:/etc/nginx/conf.d/custom.conf:ro
     restart: always
 
 networks:
